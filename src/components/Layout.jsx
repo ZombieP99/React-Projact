@@ -19,6 +19,8 @@ function Layout() {
             <Link to="/">Home</Link>
             <Link to="/products">Products</Link>
             <Link to="/about">About</Link>
+            <Link to="/contact">Contact</Link>
+            <Link to="/faq">FAQ</Link>
             
             <Link to="/wishlist" className="cart-link" title="Wishlist">
               ❤️

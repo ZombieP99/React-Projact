@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import Wishlist from "./pages/Wishlist";
 import Checkout from "./pages/Checkout";
 import Contact from "./pages/Contact";
+import FAQ from "./pages/FAQ";
 import ProductDetails from "./components/ProductDetails";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="wishlist" element={<Wishlist />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="faq" element={<FAQ />} />
       </Route>
     </Routes>
   );
