@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router";
+import { CartContext } from "../context/CartContext";
 import "../styles/ProductDetails.css";
 
 function ProductDetails() {
@@ -7,6 +8,7 @@ function ProductDetails() {
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${id}`)
@@ -30,11 +32,11 @@ function ProductDetails() {
     );
   }
 
-  if (!product) {
+  if (!product || product.message) {
     return (
       <div className="product-details-container error">
         <h2>Product not found</h2>
-        <button className="back-btn" onClick={() => navigate("/")}>
+        <button className="back-btn" onClick={() => navigate("/products")}>
           Go Back
         </button>
       </div>
@@ -43,7 +45,7 @@ function ProductDetails() {
 
   return (
     <div className="product-details-container">
-      <button className="back-btn" onClick={() => navigate("/")}>
+      <button className="back-btn" onClick={() => navigate("/products")}>
         &larr; Back to Products
       </button>
 
@@ -70,7 +72,7 @@ function ProductDetails() {
           <h1>{product.title}</h1>
           <div className="rating">⭐ {product.rating} / 5</div>
           <p className="description">{product.description}</p>
-          <div className="price-tag">${product.price}</div>
+          <div className="price-tag">${product.price.toFixed(2)}</div>
 
           <div className="extra-info">
             <p>
@@ -84,7 +86,9 @@ function ProductDetails() {
             </p>
           </div>
 
-          <button className="add-to-cart-btn">Add to Cart</button>
+          <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

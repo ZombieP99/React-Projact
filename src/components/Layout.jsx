@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { Outlet, Link } from 'react-router';
 import { ThemeContext } from '../context/ThemeContext';
+import { CartContext } from '../context/CartContext';
 import '../styles/Layout.css';
 
 function Layout() {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const { cartCount } = useContext(CartContext);
 
   return (
     <div className="layout">
@@ -15,6 +17,10 @@ function Layout() {
             <Link to="/">Home</Link>
             <Link to="/products">Products</Link>
             <Link to="/about">About</Link>
+            <Link to="/cart" className="cart-link">
+              🛒 Cart
+              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+            </Link>
             <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme">
               {isDarkMode ? (
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-sun">
