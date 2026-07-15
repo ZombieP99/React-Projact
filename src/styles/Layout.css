@@ -51,14 +51,31 @@
 .theme-toggle {
   background: none;
   border: none;
-  font-size: 1.25rem;
   cursor: pointer;
-  padding: 0.25rem;
-  transition: transform 0.2s;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--text-main);
+  transition: all 0.2s ease;
 }
 
 .theme-toggle:hover {
+  background: var(--border-color);
   transform: scale(1.1);
+}
+
+.icon-sun, .icon-moon {
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .icon-sun {
+  transform: rotate(45deg);
+}
+
+.theme-toggle:hover .icon-moon {
+  transform: rotate(-15deg);
 }
 
 .main-content {
