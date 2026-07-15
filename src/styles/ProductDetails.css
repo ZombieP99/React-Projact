@@ -210,6 +210,9 @@
 
 .wishlist-btn-large {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   color: var(--text-main);
   border: 2px solid var(--border-color);
