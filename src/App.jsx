@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import Wishlist from "./pages/Wishlist";
 import Checkout from "./pages/Checkout";
+import Contact from "./pages/Contact";
 import ProductDetails from "./components/ProductDetails";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="wishlist" element={<Wishlist />} />
         <Route path="checkout" element={<Checkout />} />
+        <Route path="contact" element={<Contact />} />
       </Route>
     </Routes>
   );
