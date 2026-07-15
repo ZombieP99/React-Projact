@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import { Outlet, Link } from 'react-router';
 import { ThemeContext } from '../context/ThemeContext';
 import { CartContext } from '../context/CartContext';
+import { AuthContext } from '../context/AuthContext';
 import '../styles/Layout.css';
 
 function Layout() {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
   const { cartCount } = useContext(CartContext);
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <div className="layout">
@@ -21,6 +23,16 @@ function Layout() {
               🛒 Cart
               {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
             </Link>
+            
+            {user ? (
+              <div className="user-menu">
+                <Link to="/profile" className="profile-link">👤 {user.name.split(' ')[0]}</Link>
+                <button onClick={logout} className="logout-btn">Logout</button>
+              </div>
+            ) : (
+              <Link to="/login" className="login-link">Login</Link>
+            )}
+
             <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme">
               {isDarkMode ? (
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-sun">
