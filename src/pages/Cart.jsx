@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { CartContext } from '../context/CartContext';
 import '../styles/Cart.css';
 
 function Cart() {
   const { cartItems, removeFromCart, updateQuantity, clearCart, cartTotal } = useContext(CartContext);
+  const navigate = useNavigate();
 
   if (cartItems.length === 0) {
     return (
@@ -54,7 +55,7 @@ function Cart() {
             <span>Total</span>
             <span>${cartTotal.toFixed(2)}</span>
           </div>
-          <button className="checkout-btn">Proceed to Checkout</button>
+          <button className="checkout-btn" onClick={() => navigate('/checkout')}>Proceed to Checkout</button>
           <button className="clear-cart-btn" onClick={clearCart}>Clear Cart</button>
         </div>
       </div>
