@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Outlet, Link } from 'react-router';
+import { ThemeContext } from '../context/ThemeContext';
 import '../styles/Layout.css';
 
 function Layout() {
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+
   return (
     <div className="layout">
       <header className="navbar">
@@ -12,6 +15,9 @@ function Layout() {
             <Link to="/">Home</Link>
             <Link to="/products">Products</Link>
             <Link to="/about">About</Link>
+            <button className="theme-toggle" onClick={toggleTheme}>
+              {isDarkMode ? "☀️" : "🌙"}
+            </button>
           </nav>
         </div>
       </header>
