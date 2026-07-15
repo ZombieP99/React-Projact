@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router";
+import { CartContext } from "../context/CartContext";
 
 function Card({ product, onDelete }) {
+  const { addToCart } = useContext(CartContext);
+
   return (
     <div className="product-card">
       <Link to={`/product/${product.id}`} className="image-wrapper">
@@ -12,9 +15,14 @@ function Card({ product, onDelete }) {
         <h3>{product.title}</h3>
         <p className="desc">{product.description}</p>
         <p className="price">${product.price}</p>
-        <button className="del-btn" onClick={() => onDelete(product.id)}>
-          Delete
-        </button>
+        <div className="card-actions">
+          <button className="add-cart-btn" onClick={() => addToCart(product)}>
+            Add to Cart
+          </button>
+          <button className="del-btn" onClick={() => onDelete(product.id)}>
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   );
