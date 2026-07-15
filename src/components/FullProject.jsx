@@ -6,7 +6,6 @@ function FullProject({ initialProducts }) {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     setProducts(initialProducts || []);
@@ -31,14 +30,8 @@ function FullProject({ initialProducts }) {
     setProducts(products.filter((p) => p.id !== id));
   }
 
-  const toggleDarkMode = () => {
-    setIsDarkMode((prevMode) => !prevMode);
-  };
-
   return (
-    <section
-      className={`products-section ${isDarkMode ? "section-dark" : "section-light"}`}
-    >
+    <section className="products-section">
       <div className="header-controls">
         <div className="search-wrapper">
           <input
@@ -54,20 +47,13 @@ function FullProject({ initialProducts }) {
             </button>
           )}
         </div>
-        <button
-          className={`theme-toggle ${isDarkMode ? "dark" : "light"}`}
-          onClick={toggleDarkMode}
-        >
-          {isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-        </button>
       </div>
 
-      {}
       <div className="filters-container">
         {categories.map((category) => (
           <button
             key={category}
-            className={`filter-chip ${selectedCategory === category ? "active" : ""} ${isDarkMode ? "dark" : "light"}`}
+            className={`filter-chip ${selectedCategory === category ? "active" : ""}`}
             onClick={() => setSelectedCategory(category)}
           >
             {category}
@@ -82,7 +68,6 @@ function FullProject({ initialProducts }) {
               key={p.id}
               product={p}
               onDelete={handleDelete}
-              isDarkMode={isDarkMode}
             />
           ))
         ) : (

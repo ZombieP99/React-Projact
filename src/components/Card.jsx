@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router";
 
-function Card({ product, onDelete, isDarkMode }) {
+function Card({ product, onDelete }) {
   return (
-    <div className={`product-card ${isDarkMode ? "dark" : ""}`}>
+    <div className="product-card">
       <Link to={`/product/${product.id}`} className="image-wrapper">
         <img src={product.thumbnail} alt={product.title} />
       </Link>
