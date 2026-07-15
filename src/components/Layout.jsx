@@ -19,7 +19,12 @@ function Layout() {
             <Link to="/">Home</Link>
             <Link to="/products">Products</Link>
             <Link to="/about">About</Link>
-            <Link to="/cart" className="cart-link">
+            
+            <Link to="/wishlist" className="cart-link" title="Wishlist">
+              ❤️
+            </Link>
+
+            <Link to="/cart" className="cart-link" title="Cart">
               🛒 Cart
               {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
             </Link>

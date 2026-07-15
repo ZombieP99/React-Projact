@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router";
 import { CartContext } from "../context/CartContext";
+import { WishlistContext } from "../context/WishlistContext";
 import "../styles/ProductDetails.css";
 
 function ProductDetails() {
@@ -9,6 +10,7 @@ function ProductDetails() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const { addToCart } = useContext(CartContext);
+  const { toggleWishlist, isInWishlist } = useContext(WishlistContext);
 
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${id}`)
@@ -86,9 +88,17 @@ function ProductDetails() {
             </p>
           </div>
 
-          <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
-            Add to Cart
-          </button>
+          <div className="action-buttons-row">
+            <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
+              Add to Cart
+            </button>
+            <button 
+              className={`wishlist-btn-large ${isInWishlist(product.id) ? 'active' : ''}`} 
+              onClick={() => toggleWishlist(product)}
+            >
+              {isInWishlist(product.id) ? '❤️ Remove from Wishlist' : '🤍 Add to Wishlist'}
+            </button>
+          </div>
         </div>
       </div>
     </div>

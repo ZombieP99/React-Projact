@@ -191,7 +191,51 @@
 }
 
 .add-to-cart-btn:hover {
-  background: var(--primary-hover);
+  background-color: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.action-buttons-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.action-buttons-row .add-to-cart-btn {
+  flex: 1;
+  margin-top: 0;
+}
+
+.wishlist-btn-large {
+  flex: 1;
+  background-color: transparent;
+  color: var(--text-main);
+  border: 2px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.wishlist-btn-large:hover {
+  background-color: var(--bg-color);
+  border-color: var(--text-main);
+}
+
+.wishlist-btn-large.active {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.wishlist-btn-large.active:hover {
+  background-color: #fee2e2;
+}
+
+body.dark-theme .wishlist-btn-large.active:hover {
+  background-color: rgba(239, 68, 68, 0.1);
 }

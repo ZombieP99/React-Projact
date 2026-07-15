@@ -1,12 +1,24 @@
 import React, { useContext } from "react";
 import { Link } from "react-router";
 import { CartContext } from "../context/CartContext";
+import { WishlistContext } from "../context/WishlistContext";
 
 function Card({ product, onDelete }) {
   const { addToCart } = useContext(CartContext);
+  const { toggleWishlist, isInWishlist } = useContext(WishlistContext);
+
+  const inWishlist = isInWishlist(product.id);
 
   return (
     <div className="product-card">
+      <button 
+        className={`wishlist-heart-btn ${inWishlist ? 'active' : ''}`}
+        onClick={() => toggleWishlist(product)}
+        title="Toggle Wishlist"
+      >
+        {inWishlist ? '❤️' : '🤍'}
+      </button>
+
       <Link to={`/product/${product.id}`} className="image-wrapper">
         <img src={product.thumbnail} alt={product.title} />
       </Link>
