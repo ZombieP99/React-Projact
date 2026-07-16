@@ -78,8 +78,3 @@ src/
 ├── App.jsx          # Main application routing logic
 └── main.jsx         # Application entry point & Global wrappers
 ```
-
----
-<div align="center">
-  <i>Developed with ❤️ for a premium web experience.</i>
-</div>
