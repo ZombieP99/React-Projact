@@ -12,17 +12,76 @@ function Home() {
       .catch((err) => console.error(err));
   }, []);
 
+  const categories = [
+    { name: "Smartphones", icon: "📱" },
+    { name: "Laptops", icon: "💻" },
+    { name: "Fragrances", icon: "✨" },
+    { name: "Skincare", icon: "🧴" },
+    { name: "Groceries", icon: "🛒" },
+    { name: "Home Decoration", icon: "🏡" }
+  ];
+
+  const testimonials = [
+    { name: "Sarah L.", role: "Verified Buyer", text: "Absolutely love the quality! MyStore has never disappointed me. Shipping was incredibly fast too.", rating: 5 },
+    { name: "Michael J.", role: "Regular Customer", text: "Great customer service and premium products. This is my go-to place for online shopping.", rating: 5 },
+    { name: "Emma W.", role: "Verified Buyer", text: "The user experience is fantastic, and the product arrived exactly as described. Highly recommend!", rating: 4 }
+  ];
+
   return (
     <div className="home-container">
       {/* Hero Section */}
       <section className="hero-section">
-        <div className="hero-content">
-          <h1>Discover Your Next <span className="highlight">Favorite</span> Product</h1>
-          <p>Explore our premium collection of handpicked items, designed to bring joy and convenience to your everyday life.</p>
-          <div className="hero-buttons">
-            <Link to="/products" className="cta-button primary">Shop Now</Link>
-            <Link to="/about" className="cta-button secondary">Learn More</Link>
+        <div className="hero-content-wrapper">
+          <div className="hero-text">
+            <div className="hero-badge">🚀 The New Standard of Shopping</div>
+            <h1>Discover Your Next <br/><span className="highlight">Favorite</span> Product</h1>
+            <p>Explore our premium collection of handpicked items, designed to bring joy and convenience to your everyday life.</p>
+            <div className="hero-buttons">
+              <Link to="/products" className="cta-button primary">Start Shopping</Link>
+              <Link to="/about" className="cta-button secondary">Our Story</Link>
+            </div>
+            <div className="hero-stats">
+              <div className="stat-item"><strong>10k+</strong> <span>Happy Customers</span></div>
+              <div className="stat-divider"></div>
+              <div className="stat-item"><strong>500+</strong> <span>Premium Brands</span></div>
+            </div>
           </div>
+          <div className="hero-image">
+            <div className="hero-image-inner">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" className="hero-svg">
+                <defs>
+                  <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.9" />
+                    <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.9" />
+                  </linearGradient>
+                  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="15" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
+                </defs>
+                <circle cx="200" cy="200" r="160" fill="url(#heroGrad)" filter="url(#glow)"/>
+                <path d="M120 260 L200 140 L280 260 Z" fill="#ffffff" opacity="0.9" />
+                <circle cx="200" cy="120" r="25" fill="#ffffff" opacity="0.9" />
+                <rect x="140" y="270" width="120" height="20" rx="10" fill="#ffffff" opacity="0.7"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Categories Section */}
+      <section className="categories-section">
+        <div className="section-header center">
+          <h2>Shop by Category</h2>
+          <p>Find exactly what you're looking for</p>
+        </div>
+        <div className="categories-grid">
+          {categories.map((cat, index) => (
+            <Link to="/products" className="category-card" key={index}>
+              <div className="category-icon">{cat.icon}</div>
+              <h3>{cat.name}</h3>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -77,6 +136,33 @@ function Home() {
                 <p>${p.price.toFixed(2)}</p>
               </div>
             </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="testimonials-section">
+        <div className="section-header center">
+          <h2>What Our Customers Say</h2>
+          <p>Don't just take our word for it</p>
+        </div>
+        <div className="testimonials-grid">
+          {testimonials.map((test, index) => (
+            <div className="testimonial-card" key={index}>
+              <div className="stars">
+                {Array.from({length: 5}).map((_, i) => (
+                  <span key={i} className={i < test.rating ? "star filled" : "star"}>★</span>
+                ))}
+              </div>
+              <p className="testimonial-text">"{test.text}"</p>
+              <div className="testimonial-author">
+                <div className="author-avatar">{test.name.charAt(0)}</div>
+                <div className="author-info">
+                  <h4>{test.name}</h4>
+                  <span>{test.role}</span>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </section>
