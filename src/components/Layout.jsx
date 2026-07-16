@@ -66,7 +66,7 @@ function Layout() {
                 </svg>
               )}
             </button>
-          </nav>
+          </div>
         </div>
       </header>
       <main className="main-content">
