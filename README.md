@@ -24,18 +24,6 @@
 - **User Workflows**: Dedicated pages for Login, Registration, Profile, Wishlist, Cart, and a 2-column Checkout experience.
 - **Responsive Design**: Flawless experience across Desktop, Tablet, and Mobile devices using CSS Grid and Flexbox.
 
-## 📸 Screenshots
-
-> **Note to Developer:** Please create a folder named `docs` in the root of your project, take screenshots of your running app, and name them as shown below to display them here!
-
-| Home Page | Products & Wishlist |
-|:---:|:---:|
-| <img src="./docs/home.png" alt="Home Page" width="400"/> <br/> *(Save screenshot as docs/home.png)* | <img src="./docs/products.png" alt="Products Page" width="400"/> <br/> *(Save screenshot as docs/products.png)* |
-
-| Dark Mode Experience | Cart & Checkout |
-|:---:|:---:|
-| <img src="./docs/darkmode.png" alt="Dark Mode" width="400"/> <br/> *(Save screenshot as docs/darkmode.png)* | <img src="./docs/checkout.png" alt="Checkout Page" width="400"/> <br/> *(Save screenshot as docs/checkout.png)* |
-
 ## 🛠️ Technologies Used
 - **Framework**: [React](https://reactjs.org/)
 - **Build Tool**: [Vite](https://vitejs.dev/)
